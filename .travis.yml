@@ -12,6 +12,7 @@ matrx:
               apt:
                   packages:
                         - maven   
+         script: mvn test -e -P hadoop-1     
 
 env:
   - HADOOP_PROFILE=default TEST_CODECS=uncompressed,brotli
