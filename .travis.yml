@@ -18,9 +18,4 @@ env:
   - HADOOP_PROFILE=default TEST_CODECS=gzip,snappy
 
 install: mvn install --batch-mode -DskipTests=true -Dmaven.javadoc.skip=true -Dsource.skip=true | pv -fbi 60 > mvn_install.log || (cat mvn_install.log && false)
-
-before_script:
-  - sed -i '181,224d' parquet-thrift/pom.xml 
-  - sed -i '66 i <exclusions> \n <exclusion> \n  <groupId>com.hadoop.gplcompression</groupId> \n <artifactId>hadoop-lzo</artifactId> \n \ </exclusion> \n </exclusions>' parquet-thrift/pom.xml 
-
 script: mvn verify --batch-mode javadoc:javadoc -P $HADOOP_PROFILE
