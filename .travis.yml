@@ -1,11 +1,15 @@
 language: java
 before_install:
   - bash dev/travis-before_install.sh
-arch: ppc64le
 
-jdk:
-  - openjdk8
-  - openjdk11
+matrx:
+   include:
+       - arch: ppc64le
+         jdk: 
+            - openjdk8
+            - openjdk11
+         install: mvn clean install -U -e --batch-mode -DskipTests=true   
+
 
 env:
   - HADOOP_PROFILE=default TEST_CODECS=uncompressed,brotli
