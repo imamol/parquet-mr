@@ -8,8 +8,6 @@ matrx:
          jdk: 
             - openjdk8
             - openjdk11
-         install: mvn clean install -U -e --batch-mode -DskipTests=true   
-
 
 env:
   - HADOOP_PROFILE=default TEST_CODECS=uncompressed,brotli
