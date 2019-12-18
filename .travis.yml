@@ -8,6 +8,10 @@ matrx:
          jdk: 
             - openjdk8
             - openjdk11
+         addons:
+              apt:
+                  packages:
+                        - maven   
 
 env:
   - HADOOP_PROFILE=default TEST_CODECS=uncompressed,brotli
