@@ -21,8 +21,6 @@ install: mvn install --batch-mode -DskipTests=true -Dmaven.javadoc.skip=true -Ds
 
 before_script:
   - sed -i '181,224d' parquet-thrift/pom.xml 
-  - sed -i '66 i <exclusions> \n <!-- hadoop-lzo is not required for parquet build/tests and there are issues downloading it --> \n \
-		<exclusion> \n  <groupId>com.hadoop.gplcompression</groupId> \n <artifactId>hadoop-lzo</artifactId> \n \
-		</exclusion> \n </exclusions>' parquet-thrift/pom.xml 
+  - sed -i '66 i <exclusions> \n <exclusion> \n  <groupId>com.hadoop.gplcompression</groupId> \n <artifactId>hadoop-lzo</artifactId> \n \ </exclusion> \n </exclusions>' parquet-thrift/pom.xml 
 
 script: mvn verify --batch-mode javadoc:javadoc -P $HADOOP_PROFILE
