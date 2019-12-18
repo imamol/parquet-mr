@@ -11,8 +11,12 @@ matrx:
          addons:
               apt:
                   packages:
-                        - maven   
-         script: mvn test -e -P hadoop-1     
+                        - maven 
+         before_script:
+            - sed -i '441d' pom.xml
+            - sed -i '441 i <version>2.19.1</version>' pom.xml
+         script:
+            - mvn test -e -P hadoop-1     
 
 env:
   - HADOOP_PROFILE=default TEST_CODECS=uncompressed,brotli
